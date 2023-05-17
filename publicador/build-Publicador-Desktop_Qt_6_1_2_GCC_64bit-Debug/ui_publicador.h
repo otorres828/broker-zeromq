@@ -25,13 +25,15 @@ class Ui_Publicador
 {
 public:
     QWidget *centralwidget;
-    QPushButton *conectar;
     QLineEdit *host;
     QLabel *label;
     QLabel *label_2;
     QLabel *label_3;
     QLineEdit *puerto;
     QLineEdit *mensaje;
+    QPushButton *on_off;
+    QPushButton *on;
+    QPushButton *off;
     QMenuBar *menubar;
     QStatusBar *statusbar;
 
@@ -39,12 +41,9 @@ public:
     {
         if (Publicador->objectName().isEmpty())
             Publicador->setObjectName(QString::fromUtf8("Publicador"));
-        Publicador->resize(277, 180);
+        Publicador->resize(277, 257);
         centralwidget = new QWidget(Publicador);
         centralwidget->setObjectName(QString::fromUtf8("centralwidget"));
-        conectar = new QPushButton(centralwidget);
-        conectar->setObjectName(QString::fromUtf8("conectar"));
-        conectar->setGeometry(QRect(50, 110, 139, 25));
         host = new QLineEdit(centralwidget);
         host->setObjectName(QString::fromUtf8("host"));
         host->setGeometry(QRect(90, 10, 141, 25));
@@ -63,7 +62,36 @@ public:
         mensaje = new QLineEdit(centralwidget);
         mensaje->setObjectName(QString::fromUtf8("mensaje"));
         mensaje->setGeometry(QRect(90, 70, 141, 25));
+        on_off = new QPushButton(centralwidget);
+        on_off->setObjectName(QString::fromUtf8("on_off"));
+        on_off->setGeometry(QRect(70, 110, 121, 25));
+        QFont font;
+        font.setFamilies({QString::fromUtf8("Tlwg Mono")});
+        font.setPointSize(15);
+        font.setItalic(false);
+        on_off->setFont(font);
+        on = new QPushButton(centralwidget);
+        on->setObjectName(QString::fromUtf8("on"));
+        on->setGeometry(QRect(30, 150, 91, 51));
+        QFont font1;
+        font1.setFamilies({QString::fromUtf8("Ubuntu Mono")});
+        font1.setPointSize(17);
+        font1.setBold(true);
+        on->setFont(font1);
+        off = new QPushButton(centralwidget);
+        off->setObjectName(QString::fromUtf8("off"));
+        off->setGeometry(QRect(150, 150, 91, 51));
+        off->setFont(font1);
         Publicador->setCentralWidget(centralwidget);
+        off->raise();
+        on->raise();
+        host->raise();
+        label->raise();
+        label_2->raise();
+        label_3->raise();
+        puerto->raise();
+        mensaje->raise();
+        on_off->raise();
         menubar = new QMenuBar(Publicador);
         menubar->setObjectName(QString::fromUtf8("menubar"));
         menubar->setGeometry(QRect(0, 0, 277, 22));
@@ -80,10 +108,12 @@ public:
     void retranslateUi(QMainWindow *Publicador)
     {
         Publicador->setWindowTitle(QCoreApplication::translate("Publicador", "Publicador", nullptr));
-        conectar->setText(QCoreApplication::translate("Publicador", "Conectar y Publicar", nullptr));
         label->setText(QCoreApplication::translate("Publicador", "HOST", nullptr));
         label_2->setText(QCoreApplication::translate("Publicador", "PUERTO", nullptr));
         label_3->setText(QCoreApplication::translate("Publicador", "MENSAJE", nullptr));
+        on_off->setText(QCoreApplication::translate("Publicador", "PUBLICAR", nullptr));
+        on->setText(QCoreApplication::translate("Publicador", "ON", nullptr));
+        off->setText(QCoreApplication::translate("Publicador", "OFF", nullptr));
     } // retranslateUi
 
 };

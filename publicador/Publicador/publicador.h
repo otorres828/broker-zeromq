@@ -16,7 +16,11 @@ public:
     ~Publicador();
 
 private slots:
-    void on_conectar_clicked();
+    void on_on_clicked();
+
+    void on_off_clicked();
+
+    void on_on_off_clicked();
 
 private:
     Ui::Publicador *ui;

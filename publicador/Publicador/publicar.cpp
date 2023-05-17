@@ -28,7 +28,7 @@ Publicar::Publicar(QString direccion, QString mensaje)
          zmq::message_t zmq_message(mensaje_codificado.data(), mensaje_codificado.size());
          socket.send(zmq_message, zmq::send_flags::none);
          // Mostrar una ventana emergente que diga "Mensaje enviado"
-         QMessageBox::information(nullptr, "Mensaje enviado", "El mensaje se ha enviado correctamente.");
+         //QMessageBox::information(nullptr, "Mensaje enviado", "El mensaje se ha enviado correctamente.");
      } catch (const zmq::error_t& ex) {
          // Maneja la excepción de conexión aquí
          QMessageBox::critical(nullptr, "Error de conexión", "Ocurrió un error de conexión:\n" + QString(ex.what()));
