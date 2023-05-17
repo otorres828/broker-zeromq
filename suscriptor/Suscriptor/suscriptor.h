@@ -25,6 +25,7 @@ private slots:
 private:
     Ui::Suscriptor *ui;
     bool conectado;
+    bool terminar;
     zmq::context_t context;
     zmq::socket_t subscriber;
     std::thread* recibir_thread;

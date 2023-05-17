@@ -10,6 +10,7 @@ Suscriptor::Suscriptor(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::Suscriptor)
     , conectado(false)
+    , terminar(true)
     , recibir_thread(nullptr)
 {
     ui->setupUi(this);
@@ -21,6 +22,7 @@ Suscriptor::~Suscriptor(){
 
 
 void Suscriptor::on_conectar_clicked(){
+
     // Leer el texto de los QTextEdit
     QString host = ui->host->text();
     QString puerto = ui->puerto->text();
@@ -50,7 +52,7 @@ void Suscriptor::on_conectar_clicked(){
 
             // Nos suscribimos a todos los mensajes
             subscriber.set(zmq::sockopt::subscribe, "");
-            while (true) {
+            while (conectado) {
                 zmq::message_t message;
                 subscriber.recv(message, zmq::recv_flags::none);
 
@@ -90,7 +92,7 @@ void Suscriptor::on_conectar_clicked(){
         delete recibir_thread;
 
         // Desconectar el suscriptor del broker
-        subscriber.disconnect(direccion.toStdString());
+        terminar=false;
 
         // Cerrar el socket y el contexto de ZeroMQ
         subscriber.close();
