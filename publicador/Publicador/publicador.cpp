@@ -65,7 +65,7 @@ void Publicador::on_on_off_clicked()
     // Leer el texto de los QTextEdit
     QString host = ui->host->text();
     QString puerto = ui->puerto->text();
-    QString mensaje = "OFF";
+    QString mensaje = ui->mensaje->text();
 
     // Verificar si los campos están vacíos
     if (host.isEmpty() || puerto.isEmpty() || mensaje.isEmpty()) {
