@@ -1,0 +1,6 @@
+<RCC>
+    <qresource prefix="/bombillo">
+        <file>bombillo_off.png</file>
+        <file>bombillo_on.png</file>
+    </qresource>
+</RCC>
