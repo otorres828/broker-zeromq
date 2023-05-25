@@ -97,7 +97,7 @@ void Suscriptor::on_conectar_clicked(){
         // Cerrar el socket y el contexto de ZeroMQ
         subscriber.close();
         context.close();
-
+        ui->bombillo->setPixmap(QPixmap()); // Asignar una QPixmap vacía a ui->bombillo
         // Cambiar el texto del botón a "CONECTAR"
         ui->conectar->setText("CONECTAR");
         conectado = false;

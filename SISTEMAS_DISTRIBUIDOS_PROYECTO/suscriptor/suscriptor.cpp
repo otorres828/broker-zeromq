@@ -14,9 +14,25 @@ int main() {
     zmq::context_t context(1);
     zmq::socket_t subscriber(context, ZMQ_SUB);
 
-    // Conectamos el suscriptor al broker
-    subscriber.connect("tcp://localhost:5556");
+    std::string mensaje, host,puerto,direccion;
+    int conectado=1;
+    while (conectado) {
+        try {
+            std::cout << "Escriba el host: ";
+            std::getline(std::cin, host);
+            std::cout << "Escriba el puerto: ";
+            std::getline(std::cin, puerto);
+            direccion="tcp://"+host+":"+puerto;
 
+            // Conectamos el suscriptor al broker
+            subscriber.connect(direccion);
+            std::cout << "Se conecto correctamente: "<<std::endl;
+            conectado=0;
+        } catch (const zmq::error_t& ex) {
+            // Maneja la excepción de conexión aquí
+            std::cout<<"error al enviar suscribirse:"<<direccion<<std::endl;
+        }
+    }
     // Nos suscribimos a todos los mensajes
     subscriber.set(zmq::sockopt::subscribe, "");
 
